@@ -10,6 +10,7 @@ Maven 기반
 Lombok 라이브러리 : Java 개발 시 자주 사용하는 getter/setter, toString(), 생성자 등을 자동으로 생성해 줌.
 
 ex00 : XML 기반
+
 jex00 : JAVA 기반
 (@Configuration 어노테이션을 이용해서 해당 클래스의 인스턴스를 이용해서 설정 파일을 대신함.)
 (root-context.xml -> RootConfig.java, web.xml -> WebConfig.java)
