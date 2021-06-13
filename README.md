@@ -4,25 +4,15 @@
 PART 1 : 스프링 개발 환경 구축
 
 JDK 1.8
-
 STS(Spring Tool Suite) 플러그인
-
 Tomcat 9
-
 Maven 기반
-
 Lombok 라이브러리 : Java 개발 시 자주 사용하는 getter/setter, toString(), 생성자 등을 자동으로 생성해 줌.
-
 Oracle Database 연동 (11g Express 버전)
-
 SQL Developer 설치
-
 JDBC 연결
-
 커넥션 풀(여러 명의 사용자를 동시에 처리해야 하는 웹 애플리케이션의 경우 사용) 설정
-
 MyBatis 연동
-
 
 ex00 : XML 기반
 
@@ -52,5 +42,3 @@ Test 관련 :
 1. @ContextConfiguration : 스프링이 실행되면서 어떤 설정 정보를 읽어 들여야 하는지를 명시합니다.
 2. @Runwith : 테스트 시 필요한 클래스를 지정합니다.(스프링은 SpringJUnit4ClassRunner 클래스가 대상)
 3. @Test : junit에서 해당 메서드가 jUnit 상에서 단위 테스트의 대상인지 알려줍니다.
-4. 
-5. 
