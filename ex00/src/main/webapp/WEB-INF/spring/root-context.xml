@@ -19,7 +19,7 @@
         value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"></property> 
         
 		<property name="username" value="book_ex"></property>
-		<property name="password" value="Imbc6922"></property>
+		<property name="password" value="********"></property>
 	</bean>
 	
 	<!--HikariCP Configration-->
