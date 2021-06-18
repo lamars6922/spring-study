@@ -4,14 +4,23 @@
 PART 1 : 스프링 개발 환경 구축
 
 JDK 1.8
+
 STS(Spring Tool Suite) 플러그인
+
 Tomcat 9
+
 Maven 기반
+
 Lombok 라이브러리 : Java 개발 시 자주 사용하는 getter/setter, toString(), 생성자 등을 자동으로 생성해 줌.
+
 Oracle Database 연동 (11g Express 버전)
+
 SQL Developer 설치
+
 JDBC 연결
+
 커넥션 풀(여러 명의 사용자를 동시에 처리해야 하는 웹 애플리케이션의 경우 사용) 설정
+
 MyBatis 연동
 
 ex00 : XML 기반
