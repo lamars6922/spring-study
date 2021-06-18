@@ -54,3 +54,22 @@ Test 관련 :
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 PART 2 : 스프링 MVC 설정
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+스프링 MVC 프로젝트를 구성해서 사용한다는 의미는 내부적으로는 root-context.xml로 사용하는 일반 Java 영역(흔히 POJO(Plain Old Java Object))과 servlet-context.xml로 설정하는 Web 관련 영역을 같이 연동해서 구동하게 됩니다. WebApplicationContext라는 존재는 기존의 구조에 MVC 설정을 포함하는 구조로 만들어짐.
+
+XML 기반 : ex01, Java 기반 : jex01
+
+jex01 : ServletConfig 클래스는 기존의 servlet-context.xml에 설정된 모든 내용을 담아야하는데, 
+1. @EnableWebMvc 어노테이션과 WebMvcConfigurer 인터페이스를 구현하는 방식
+2. @Configuration과 WebMvcConfigurationSupport 클래스를 상속하는 방식-일반 @Configuration 우선 순위가 구분되지 않는 경우에 사용
+
+예제는 1번 방식으로 제작함.
+WebMvcConfigurer는 스프링 MVC와 관련된 설정을 메서드로 오버라이드 하는 형태를 이용할 때 사용합니다.
+
+예제 프로젝트의 로딩 구조
+프로젝트 구동 시 관여하는 XML은 web.xml, root-context.xml, servlet-context.xml 파일입니다. web.xml은 Tomcat 구동과 관련된 설정이고, 나머지 두 파일은 스프링과 관련된 설정입니다.
+
+Web.xml : 가장 먼저 구동되는 Context Listener가 등록되어 있습니다. <context-param>에는 root-context.xml의 경로가 설정되어 있고, <listener>에는 스프링 MVC의 ContextLoaderListener가 등록되어 있는데 해당 웹 애플리케이션 구동 시 같이 동작함.
+  
+root-context.xml : 파일에 있는 빈(Bean) 설정들이 동작하게 됩니다. 정의된 객체(Bean)들은 스프링의 영역(context) 안에 생성되고 객체들 간의 의존성이 처리됩니다. 처리 후에는 스프링 MVC에서 사용하는 DispatcherServlet이라는 서블릿과 관련된 설정이 동작합니다.
+  
+servlet-context.xml : DispatcherServlet에서 XmlWebApplicationContext를 이용해서 servlet-context.xml를 로딩하고 해석하기 시작함. 이 과정에서 등록된 객체(Bean)들은 기존에 만들어진 객체(Bean)들과 같이 연동하게 됩니다.
