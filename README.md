@@ -73,3 +73,36 @@ Web.xml : 가장 먼저 구동되는 Context Listener가 등록되어 있습니�
 root-context.xml : 파일에 있는 빈(Bean) 설정들이 동작하게 됩니다. 정의된 객체(Bean)들은 스프링의 영역(context) 안에 생성되고 객체들 간의 의존성이 처리됩니다. 처리 후에는 스프링 MVC에서 사용하는 DispatcherServlet이라는 서블릿과 관련된 설정이 동작합니다.
   
 servlet-context.xml : DispatcherServlet에서 XmlWebApplicationContext를 이용해서 servlet-context.xml를 로딩하고 해석하기 시작함. 이 과정에서 등록된 객체(Bean)들은 기존에 만들어진 객체(Bean)들과 같이 연동하게 됩니다.
+  
+스프링 MVC의 기본 사상 : Servlet/JSP에서는 HttpServletRequest/HttpServletResponse라는 타입의 객체를 이용해 브라우저에서 전송한 정보를 처리하는 방식입니다.
+스프링 MVC의 경우 하나의 계층을 더하는 형태가 됩니다.
+ㅁ 개발자의 코드 영역 <-> Spring MVC <-> Servlet/JSP
+스프링 MVC를 이용하게 되면 개발자들은 직접적으로 HttpServletRequest/HttpServletResponse 등과 같이 Servlet/JSP의 API를 사용할 필요성이 현저하게 줄어듭니다.
+스프링은 중간에 연결 역할을 하기 때문에 이러한 코드를 작성하지 않고도 원하는 기능을 구현할 수 있게 됩니다.
+  
+스프링 MVC의 특정한 클래스를 상속하거나 인터페이스를 구현하는 형태로 개발할 수 있었지만, 스프링 2.5버전부터 등장한 어노테이션 방식으로 최근 개발에는 어노테이션이나 XML 등의 설정만으로 개발이 가능하게 되었습니다.
+  
+모델2와 스프링 MVC : 스프링 MVC는 '모델 2'라는 방식으로 처리되는 구조입니다. 모델 2방식은 쉽게 말해서 '로직과 화면을 분리'하는 스타일의 개발 방식입니다.
+  
+  ![11](https://user-images.githubusercontent.com/57030114/122504823-070c7380-d036-11eb-9bbf-a8161e02d5a5.PNG)
+
+  모델 2방식에서 사용자의 Request는 특별한 상황이 아닌 이상 먼저 Controller를 호출하게 됩니다. 설계의 가장 중요한 이유는 나중에 View를 교체하더라도 사용자가 호출하는 URL 자체에 변화가 없게 만들어 주기 때문입니다. 컨트롤러는 데이터를 처리하는 존재를 이용해서 데이터(Model)를 처리하고 Response 할 때 필요한 데이터(Model)를 View 쪽으로 전달하게 됩니다. Servlet을 이용하는 경우 개발자들은 Servlet API의 RequestDispatcher 등을 이용해서 이를 직접 처리해 왔지만 스프링 MVC는 내부에서 이러한 처리를 하고, 개발자들은 스프링 MVC의 API를 이용해서 코드를 작성하게 됩니다.
+  
+  스프링 MVC의 기본 구조는 아래 그림과 같이 표현할 수 있습니다.
+  
+  ![22](https://user-images.githubusercontent.com/57030114/122505282-fc061300-d036-11eb-9c42-7a5a70417385.PNG)
+  
+  1. 사용자의 Request는 Front-Controller인 DispatcherServlet을 통해 처리합니다.
+  
+  2, 3. HandlerMapping은 Request의 처리를 담당하는 컨트롤러를 찾기 위해서 존재합니다. HandlerMapping 인터페이스를 구현한 여러 객체들 중 RequestMappingHandlerMap-ping 같은 경우는 개발자가 @RequestMapping 어노테이션이 적용된 것을 기준으로 판단하게 됩니다. 적절한 컨트롤러가 찾아졌다면 HandlerAdapter를 이용해서 해당 컨트롤러를 동작시킵니다.
+  
+  4. Controller는 개발자가 작성하는 클래스로 실제 Request를 처리하는 로직을 작성하게 됩니다. View에 전달해야 하는 데이터는 주로 Model이라는 객체에 담아서 전달. 다양한 타입의 결과를 반환하는데 이에 대한 처리는 ViewResolver를 이용하게 됩니다. 
+  
+  5. ViewResolver는 Controller가 반환한 결과를 어떤 View를 통해서 처리하는 것이 좋을지 해석하는 역할을 합니다. 가장 흔한 설정은 servlet-context.xml에 정의된 Inter-nalResourceViewResolver입니다.
+  
+  6, 7. View는 실제로 응답을 보내야 하는 데이터를 Jsp 등을 이용해서 생성하는 역할을 하게 됩니다. 만들어진 응답은 DispathcherServlet을 통해서 전달됩니다.
+  
+  Request는 DispatcherServlet을 통하도록 설계되는데, 이런 방식을 Front-Controller 패턴, 이 패턴을 이용하는 경우에는 모든 Request의 처리에 대한 분배가 정해진 방식대로만 동작하기 때문에 좀 더 엄격한 구조를 만들어 낼 수 있습니다.
+  
+
+
