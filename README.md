@@ -104,5 +104,21 @@ servlet-context.xml : DispatcherServlet에서 XmlWebApplicationContext를 이용
   
   Request는 DispatcherServlet을 통하도록 설계되는데, 이런 방식을 Front-Controller 패턴, 이 패턴을 이용하는 경우에는 모든 Request의 처리에 대한 분배가 정해진 방식대로만 동작하기 때문에 좀 더 엄격한 구조를 만들어 낼 수 있습니다.
   
-
+  스프링 MVC의 Controller의 특징
+  1. HttpServletRequest, HttpServletResponse를 거의 사용할 필요 없이 필요한 기능 구현
+  2. 다양한 타입의 파라미터 처리, 다양한 타입의 리턴 타입 사용 가능
+  3. GET 방식, POST 방식 등 전송 방식에 대한 처리를 어노테이션으로 처리 가능
+  4. 상속/인터페이스 방식 대신에 어노테이션만으로도 필요한 설정 가능
+  
+  @Controller, @RequestMapping
+  @Controller : 자동으로 스프링의 객체로 등록
+  @RequestMapping : 현재 클래스의 모든 메서드들의 기본적인 URL 경로가 됨. (클래스의 선언, 메서드 선언 사용 가능)
+                    @RequestMapping의 경우 몇 가지의 속성을 추가할 수 있음. 주로 method 속성을 사용하는데 흔히 GET 방식, POST 방식을 구분해서 사용할 때 이용.
+                    축약형으로 @GetMapping, @PostMapping, GET, POST 방식 모두를 지원해야 하는 경우 배열로 처리해서 지정할 수 있음.
+  
+  Controller를 작성할 때 가장 편리한 기능은 파라미터가 자동으로 수집되는 기능입니다. 예를 들어 SampleDTO에는 int 타입으로 선언된 age가 자동으로 숫자로 변환되는 것을 볼수 있음.
+  만일 기본 자료형이나 문자열 등을 이용한다면 파라미터의 타입만을 맞게 선언해주는 방식을 사용할 수 있습니다.
+  @RequestParam은 파라미터로 사용된 변수의 이름과 전달되는 파라미터의 이름이 다른 경우에 유용하게 사용됩니다.
+  
+  동일한 이름의 파라미터가 여러 개 전달되는 경우에는 ArrayList<> 등을 이용해서 처리가 가능합니다. 배열(예:String[])의 경우도 동일하게 처리할 수 있습니다. 
 
