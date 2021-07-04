@@ -134,16 +134,21 @@ servlet-context.xml : DispatcherServlet에서 XmlWebApplicationContext를 이용
   Servlet에서 모델 2방식으로 데이터를 전달하는 방식
 
   request.setAttribute(“servletTime”,new java.util.Date());
+  
   RequstDispatCher dispatcher= new request.getRequstDispatCher(“/WEB-INF/jsp/home.jsp”)
+  
   Dispatcher.forward(request,response);
 
   위의 코드를 스프링에서는 Model을 이용해서 다음과 같이 처리하게 됩니다.
 
   public String home(Model model) {
-          model.addAttribute("serverTime",new java.util.Date());
-          return "home";
-      }
   
+          model.addAttribute("serverTime",new java.util.Date());
+  
+          return "home";
+  
+      }
+
   Model을 사용해야 하는 경우는 주로 Controller에 전달된 데이터를 이용해서 추가적인 데이터를 가져와야 하는 상황입니다.
   
   1. 리스트 페이지 번호를 파라미터로 전달받고, 실제 데이터를 View로 전달해야 하는 경우
