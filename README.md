@@ -142,11 +142,8 @@ servlet-context.xml : DispatcherServlet에서 XmlWebApplicationContext를 이용
   위의 코드를 스프링에서는 Model을 이용해서 다음과 같이 처리하게 됩니다.
 
   public String home(Model model) {
-  
           model.addAttribute("serverTime",new java.util.Date());
-  
           return "home";
-  
       }
 
   Model을 사용해야 하는 경우는 주로 Controller에 전달된 데이터를 이용해서 추가적인 데이터를 가져와야 하는 상황입니다.
