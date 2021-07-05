@@ -136,5 +136,9 @@ servlet-context.xml : DispatcherServlet에서 XmlWebApplicationContext를 이용
   Model을 사용해야 하는 경우는 주로 Controller에 전달된 데이터를 이용해서 추가적인 데이터를 가져와야 하는 상황입니다.
   
   1. 리스트 페이지 번호를 파라미터로 전달받고, 실제 데이터를 View로 전달해야 하는 경우
-  2. 파라미터들에 대한 처리 후 결과를 전달해야 하는 
+  2. 파라미터들에 대한 처리 후 결과를 전달해야 하는 경우
+  
+  @ModelAttribute 어노테이션
+  SampleDTO의 경우는 Java Bean의 규칙에 맞기 때문에 자동으로 다시 화면까지 전달됩니다. 전달될 때에는 클래스명의 앞글자는 소문자로 처리됩니다. 반면에 기본 자료형의 경우는 파라미터로 선언하더라도 기본적으로 화면까지 전달되지는 않습니다. 예를 들어 int 타입으로 선언된 변수는 전달되지 않습니다. @ModelAttribute는 강제로 전달받은 파라미터를 Model에 담아서 전달하도록 할 때 필요한 어노테이션입니다. @ModelAttribute가 걸린 파라미터는 타입에 관계없이 무조건 Model에 담아서 전달되므로, 파라미터로 전달된 데이터를 다시 화면에서 사용해야 할 경우에 유용하게 사용됩니다.
+(기본 자료형에 @ModelAttribute를 적용할 경우에는 반드시 @ModelAttribute("page")와 같이 값(value)을 지정하도록 합니다.)
 
