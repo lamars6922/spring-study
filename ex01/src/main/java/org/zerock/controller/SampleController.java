@@ -72,7 +72,7 @@ public class SampleController {
     
     //배열
     @GetMapping("/ex02Array")
-    public String ex02List(@RequestParam("ids")String[] ids) {
+    public String ex02List(@RequestParam("ids") String[] ids) {
         log.info("Array ids: " + Arrays.toString(ids));
 
         return "ex02Array";
