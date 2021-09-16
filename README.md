@@ -195,7 +195,7 @@ PART 3 : 기본적인 웹 게시물
   
   패키지 구성은 규모가 작은 프로젝트는 Controller 영역을 별도의 패키지로 설계하고, Service 영역 등을 하나의 패키지로 설계할 수 있습니다. 반면에, 프로젝트의 규모가 커져서 많은 Service 클래스와 Controller들이 혼재할 수 있다면 비즈니스를 단위별로 구분하고 다시 내부에서 Controller 패키지, Serivce 패키지 등으로 다시 나누는 방식을 이용합니다.
   
-  ![a](https://user-images.githubusercontent.com/57030114/133596727-f4d9cb25-78e9-4678-bb4f-597abf18a912.jpg)
+![a](https://user-images.githubusercontent.com/57030114/133598380-f792a787-4647-4c67-8060-f6a4fac9a398.jpg)
 
   프로젝트를 진행하기 전에 고객의 요구사항을 인식하고, 이를 설계하는 과정이 필요합니다.
   요구사항은 실제로 상당히 방대해 질 수 있으므로, 프로젝트에서는 단계를 정확히 구분해 주는 것이 좋습니다.
