@@ -24,19 +24,42 @@ public class ReplyMapperTests {
 	//테스트 전에 해당 번호 게시물이 존재하는지 꼭 확인
 	private Long[] bnoArr = {4718707L, 4718705L, 4718704L, 4718703L, 4718702L };
 
+//	@Test
+//	public void testCreate() {
+//		IntStream.rangeClosed(1,  10).forEach(i->{
+//			ReplyVO vo = new ReplyVO();
+			
+//			vo.setBno(bnoArr[i%5]);
+//			vo.setReply("댓글 테스트 " + i);
+//			vo.setReplyer("replyer" + i);
+			
+//			mapper.insert(vo);
+//		});
+//	}
+
+//	@Test
+//	public void testDelete() {
+//		Long targetRno = 1L;
+//		mapper.delete(targetRno);
+//	}
+	
 	@Test
-	public void testCreate() {
-		IntStream.rangeClosed(1,  10).forEach(i->{
-			ReplyVO vo = new ReplyVO();
-			
-			vo.setBno(bnoArr[i%5]);
-			vo.setReply("댓글 테스트 " + i);
-			vo.setReplyer("replyer" + i);
-			
-			mapper.insert(vo);
-		});
+	public void testUpdate() {
+		Long targetRno = 3L;
+		ReplyVO vo = mapper.read(targetRno);
+		
+		vo.setReply("Update Reply ");
+		int count = mapper.update(vo);
+		
+		log.info("UPDATE COUNT: " + count);
 	}
 	
+//	@Test
+//	public void testRead() {
+//		Long targetRno = 5L;
+//		ReplyVO vo = mapper.read(targetRno);
+//		log.info(vo);
+//	}
 //	@Test
 //	public void testMapper( ) {
 //		log.info(mapper);
