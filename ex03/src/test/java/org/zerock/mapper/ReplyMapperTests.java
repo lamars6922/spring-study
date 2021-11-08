@@ -25,7 +25,7 @@ public class ReplyMapperTests {
 	private ReplyMapper mapper;
 	
 	//테스트 전에 해당 번호 게시물이 존재하는지 꼭 확인
-	private Long[] bnoArr = {4718707L, 4718705L, 4718704L, 4718703L, 4718702L };
+//	private Long[] bnoArr = {4718707L, 4718705L, 4718704L, 4718703L, 4718702L };
 
 //	@Test
 //	public void testCreate() {
@@ -57,12 +57,12 @@ public class ReplyMapperTests {
 //		log.info("UPDATE COUNT: " + count);
 //	}
 	
-	@Test
-	public void testList() {
-		Criteria cri = new Criteria();
-		List<ReplyVO> replies = mapper.getListWithPaging(cri, bnoArr[0]);
-		replies.forEach(reply->log.info(reply));
-	}
+//	@Test
+//	public void testList() {
+//		Criteria cri = new Criteria();
+//		List<ReplyVO> replies = mapper.getListWithPaging(cri, bnoArr[0]);
+//		replies.forEach(reply->log.info(reply));
+//	}
 	
 //	@Test
 //	public void testRead() {
@@ -74,4 +74,12 @@ public class ReplyMapperTests {
 //	public void testMapper( ) {
 //		log.info(mapper);
 //	}
+	
+	@Test
+	public void testList2() {
+		Criteria cri = new Criteria(2, 10);
+		List<ReplyVO> replies = mapper.getListWithPaging(cri, 4718707L );
+		
+		replies.forEach(reply -> log.info(reply));
+	}
 }
