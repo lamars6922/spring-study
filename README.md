@@ -444,7 +444,5 @@ AOP는 흔히 '관점 지향 프로그래밍'이라는 용어로 번역된다. '
   
   ![22](https://user-images.githubusercontent.com/57030114/143770740-9557ee03-790f-4e2b-b742-9e864eac784c.PNG)
   
-    Pointcut : 관심사와 비즈니스 로직이 결합되는 지점을 결정하는 것입니다. 관심사는 Aspect와 Advice라는 용어로 표현되어 있습니다.
-    Advice : 실제 걱정거리를 분리해 놓은 코드를 의미합니다. 
-             Before Advice - Target의 JoinPoint를 호출하기 전에 실행되는 코드입니다. 코드의 실행자체에는 관여할 수 없습니다.
-             After Returning Advice
+    Pointcut : 관심사와 비즈니스 로직이 결합되는 지점을 결정하는 것입니다. 관심사는 Aspect와 Advice라는 용어로 표현되어 있습니다. Advice를 어떤 JoinPoint에 결합할 것인지를 결정하는 설정합니다. ( execution(@execution), within(@within), this, arg(@args), @annotation ) 
+    Advice : 실제 걱정거리를 분리해 놓은 코드를 의미합니다. (@Before, @AfterReturning, @AfterThrowing, @After, @Around)
