@@ -160,7 +160,7 @@ public class UploadController {
 		Resource resource = new FileSystemResource("c:\\upload\\" + fileName);
 		
 		if (resource.exists() == false) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Resource>(HttpStatus.NOT_FOUND);
 		}
 		
 		String resourceName = resource.getFilename();
