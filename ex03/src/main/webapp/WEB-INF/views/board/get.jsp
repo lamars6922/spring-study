@@ -472,7 +472,7 @@
 					} else {
 						str += "<li ";
     					str += "data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='"+attach.fileType+"' ><div>";
-    					str += "<span> " + obj.fileName + "</span>";
+    					str += "<span> " + attach.fileName + "</span>";
     					str += "<img src='/resources/img/attach.png'>";
     					str += "</div>";
     					str += "</li>";
