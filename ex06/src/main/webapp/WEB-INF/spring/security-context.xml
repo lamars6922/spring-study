@@ -6,6 +6,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="customAccessDenied" class="org.zerock.security.CustomAccessDeniedHandler"></bean>
+	<bean id="customLoginSuccess" class="org.zerock.security.CustomLoginSuccessHandler"></bean>
 	
 	<security:http auto-config="true" use-expressions="true">
 
@@ -15,10 +16,18 @@
 			pattern="/sample/member" access="hasRole('ROLE_MEMBER')" />
 		<security:intercept-url 
 			pattern="/sample/admin" access="hasRole('ROLE_ADMIN')" />
-		<security:form-login />
+		
+		<!-- <security:form-login />  -->
+		
+		<security:form-login login-page="/customLogin"/>
+		<!-- <security:csrf disabled="true"/> -->
 		
 		<!-- <security:access-denied-handler error-page="/accessError"/>  -->
 		<security:access-denied-handler ref="customAccessDenied"/>
+		
+		<security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess"/>
+		<security:logout logout-url="/customLogout" invalidate-session="true"/>
+		
 		
 		</security:http>
 		
