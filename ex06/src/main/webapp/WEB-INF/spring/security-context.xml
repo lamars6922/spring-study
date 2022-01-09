@@ -21,7 +21,6 @@
 		
 		<!-- <security:form-login />  -->
 		
-		<security:form-login login-page="/customLogin"/>
 		<!-- <security:csrf disabled="true"/> -->
 		
 		<!-- <security:access-denied-handler error-page="/accessError"/>  -->
@@ -45,13 +44,13 @@
 			userid as name, auth as authorities from tbl_member_auth where userid = ? " />
 			
 			<security:password-encoder ref="bcryptPasswordEncoder"/>
-			<!-- <security:user-service>  -->
+			<!--<security:user-service>
 					
-					<!-- <security:user name= "member" password="{noop}member" authorities="ROLE_MEMBER"/>  -->
+			<security:user name= "member" password="{noop}member" authorities="ROLE_MEMBER"/>
 					
-			<!-- <security:user name= "admin" password="{noop}admin" authorities="ROLE_MEMBER, ROLE_ADMIN"/>  -->
+			<security:user name= "admin" password="{noop}admin" authorities="ROLE_MEMBER, ROLE_ADMIN"/>
 					
-			<!-- </security:user-service>  -->
+			</security:user-service>  -->
 			
 			</security:authentication-provider> 
 
