@@ -27,5 +27,19 @@ public class SampleController {
 	@GetMapping("/admin")
 	public void doAdmin() {   
 	    log.info("admin only");
-	}  
+	}
+	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_MEMBER')")
+	@GetMapping("/annoMember")
+	public void doMember2() {
+		
+		log.info("logined annotation member");
+	}
+	
+	@Secured({"ROLE_ADMIN"})
+	@GetMapping("/annoAdmin")
+	public void doAdmin2() {
+		
+		log.info("admin annotation only");
+	}
 }
